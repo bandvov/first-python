@@ -1,23 +1,9 @@
 from vpython import *
 import numpy as np
 import math
-scene.background = color.white
-scene.width = 1500
-scene.height = 760
-scene.forward = vector(-1, -1, -1)
-rate(30)
-arrowLength = 1000
-shaftwidth = 1
-xarrow = arrow(shaftwidth=shaftwidth, color=color.red)
-yarrow = arrow(shaftwidth=shaftwidth, color=color.green)
-zarrow = arrow(shaftwidth=shaftwidth, color=color.blue)
-xarrow.axis = vector(1, 0, 0)
-xarrow.length = arrowLength
-yarrow.axis = vector(0, 1, 0)
-yarrow.length = arrowLength
-zarrow.axis = vector(0, 0, 1)
-zarrow.length = arrowLength
+from scene import *
 
+set_scene()
 
 toRad = 2*np.pi/360
 toDeg = 1/toRad
@@ -31,7 +17,6 @@ z = radius * sin(yaw) * cos(pitch)
 y = radius * sin(pitch)
 
 axis = vector(x, y, z)
-print(axis)
 cylinder(axis=axis, radius=1, length=radius, color=color.red)
 
 pitch1 = 30*toRad
@@ -46,9 +31,9 @@ print(axis1)
 cylinder(axis=axis1, radius=1, length=radius1, color=color.blue)
 
 
-x2 = (x1-x)
-y2 = (y1-y)
-z2 = (z1-z)
+x2 = x1-x
+y2 = y1-y
+z2 = z1-z
 
 cylinder(pos=vector(x, y, z), axis=vector(x2, y2, z2),
          radius=1, length=100, color=color.red)
@@ -66,8 +51,6 @@ magnitude = sqrt(x3*x3 + y3*y3 + z3*z3)
 cylinder(axis=axis3, radius=1, length=magnitude, color=color.cyan)
 
 pitch3 = math.asin(y3/magnitude)
-
-print(pitch3)
 yaw3 = math.atan2(z3, x3)
 
 # print('here',  pitch3*toDeg)
