@@ -35,7 +35,7 @@ print(axis)
 cylinder(axis=axis, radius=1, length=radius, color=color.red)
 
 pitch1 = 30*toRad
-yaw1 = 52*toRad
+yaw1 = 40.*toRad
 radius1 = 1100
 x1 = radius1 * cos(pitch1) * cos(yaw1)
 y1 = radius1 * sin(pitch1)
@@ -75,12 +75,13 @@ yaw3 = math.atan2(z3, x3)
 print(x3)
 print(y3)
 print(z3)
-print(pitch*toDeg)
-print(yaw*toDeg)
+print(pitch3*toDeg)
+print(yaw3*toDeg)
 
 x4 = magnitude * cos(pitch3) * cos(yaw3)
 y4 = magnitude * sin(pitch3)
 z4 = magnitude * sin(yaw3) * cos(pitch3)
 
 axis4 = vector(x4, y4, z4)
-cylinder(axis=axis4, radius=4, length=magnitude, color=color.orange)
+cylinder(axis=axis4, radius=4, opacity=0.2,
+         length=magnitude, color=color.orange)
